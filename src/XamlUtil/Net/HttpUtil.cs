@@ -25,28 +25,28 @@ namespace XamlUtil.Net
             get { return _instance; }
         }
 
-        public static async Task<string> GetString(string urlString)
+        public static async Task<string> GetStringAsync(string urlString)
         {
-            return await _instance.GetStringInternal(urlString);
+            return await _instance.GetStringInternalAsync(urlString);
         }
 
-        private async Task<string> GetStringInternal(string urlString)
+        private async Task<string> GetStringInternalAsync(string urlString)
         {
             using (var httpClient = _httpClientFactory.CreateClient())
 #else
-        public static async Task<string> GetString(string urlString)
+        public static async Task<string> GetStringAsync(string urlString)
         {
             using (var httpClient = new HttpClient())
 #endif
             {
-                return await httpClient.GetString(urlString);
+                return await HttpClientExtensions.GetStringAsync(httpClient, urlString);
             }
         }
     }
 
     public static class HttpClientExtensions
     {
-        public static async Task<string> GetString(this HttpClient httpClient, string urlString)
+        public static async Task<string> GetStringAsync(this HttpClient httpClient, string urlString)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 

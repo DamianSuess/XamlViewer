@@ -44,7 +44,7 @@ namespace XamlViewer.ViewModels
                 {
                     var urlString = @"https://api.github.com/repos/huangjia2107/xamlviewer/releases/latest";
 
-                    var responseStr = await HttpUtil.GetString(urlString);
+                    var responseStr = await HttpUtil.GetStringAsync(urlString);
 
                     if (!string.IsNullOrEmpty(responseStr))
                         ReleaseVersion = JsonUtil.DeserializeObject<ReleaseInfo>(responseStr);
