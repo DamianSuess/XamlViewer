@@ -8,8 +8,8 @@ namespace XamlViewer.Models
     {
         public XamlConfig()
         {
-            FontFamily = "Calibri";
-            FontSize = 13d;
+            FontFamily = "Consolas";
+            FontSize = 12d;
 
             WordWrap = false;
             ShowLineNumber = true;
