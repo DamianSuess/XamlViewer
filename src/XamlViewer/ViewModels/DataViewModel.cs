@@ -125,7 +125,7 @@ namespace XamlViewer.ViewModels
 
                 CanFetch = false;
 
-                var json = await HttpUtil.GetString(RestApi);
+                var json = await HttpUtil.GetStringAsync(RestApi);
                 if(!string.IsNullOrWhiteSpace(json))
                     json = JToken.Parse(json).ToString(Formatting.Indented);
 

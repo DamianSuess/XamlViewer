@@ -60,7 +60,7 @@ namespace XamlViewer.ViewModels
             LoadedCommand = new DelegateCommand<Window>(Loaded);
             ActivatedCommand = new DelegateCommand(Activated);
             DropCommand = new DelegateCommand<DragEventArgs>(Drop);
-            ClosingCommand = new DelegateCommand<CancelEventArgs>(Closing);
+            ClosingCommand = new DelegateCommand<CancelEventArgs>(ClosingAsync);
         }
 
         private void InitStatus()
@@ -134,7 +134,7 @@ namespace XamlViewer.ViewModels
                 _appCommands.DropCommand.Execute(xamlFiles);
         }
 
-        private async void Closing(CancelEventArgs e)
+        private async void ClosingAsync(CancelEventArgs e)
         {
             await _appData.DealExistedFileAction?.Invoke();
 
